@@ -103,14 +103,8 @@ for (let victimElement of candidateElements) {
 				if (e.isMatch) {
 					// Use the rich approach
 					let newElement = document.createElement("span");
-					switch (victimElement.localName) {
-						case "p": {
-							newElement.classList.add("dpra-glorious");
-							break;
-						};
-						default: {
-							newElement.classList.add("dpra-uneventful");
-						};
+					if (location.href.indexOf("/articles/") !== -1) {
+						newElement.classList.add("dpra-text");
 					};
 					switch (e.data) {
 						case "President ":
