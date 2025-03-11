@@ -56,7 +56,7 @@ if [ -d "./src" ]; then
 			fi
 		fi
 		if [ "$targetFile" != "" ]; then
-			shx live $dir "--minify --log-level=warning" $1 > /dev/null
+			shx live $dir "--minify-syntax --log-level=warning" $1 > /dev/null
 			mv "${targetFile}" "dist/buildProxy.bin"
 			if [ -f "src/${dir}/.prefix" ]; then
 				cat "src/${dir}/.prefix" > "${targetFile}"
@@ -66,8 +66,9 @@ if [ -d "./src" ]; then
 				cat "src/${dir}/.suffix" >> "${targetFile}"
 			fi
 			rm "dist/buildProxy.bin"
-			sed -zi "$substRules" "dist/${dir}.js"
+			sed -zi "$substRules" "${targetFile}"
 		fi
+		sleep 0.1s
 	done
 #else
 #	echo "No JS targets availeble."

@@ -1,1 +1,6 @@
 /* DPRA-ify */
+span.dpra-glorious {
+	font-size: 1.5rem;
+	font-weight: 700;
+	font-family: "Times New Roman", "FreeSerif", serif;
+}
