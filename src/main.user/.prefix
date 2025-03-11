@@ -1,0 +1,12 @@
+// ==UserScript==
+// @name        DPRA-ify
+// @namespace   io.github.poneyclairdelune.dpra
+// @match       https://whitehouse.gov/*
+// @match       https://www.whitehouse.gov/*
+// @run-at      document-idle
+// @grant       none
+// @version     0.0.1
+// @author      -
+// @description Singing praises to our Beloved Sun of the Rocky Mountains, Donald J. Trump, Supreme Leader to the Democratic People's Republic of America.
+// @license     WTFPL
+// ==/UserScript==

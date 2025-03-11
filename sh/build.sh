@@ -41,21 +41,32 @@ substRules='s/{var /{let /g;s/}var /}let /g;s/;var /;let /g;s/(var /(let /g;s/va
 if [ -d "./src" ]; then
 	echo -e "\033[1;34mBuilding\033[0m: JS."
 	ls -1 src | while IFS= read -r dir ; do
-		if [ -f "src/${dir}/index.js" ] ; then
+		targetFile=
+		if [ -f "src/${dir}/index.mjs" ] ; then
+			echo "Building JS module \"${dir}\"..."
+			targetFile="dist/${dir}.mjs"
+			if [ -f "src/${dir}/index.d.mts" ] ; then
+				cp "src/${dir}/index.d.mts" "dist/${dir}.d.mts"
+			fi
+		elif [ -f "src/${dir}/index.js" ] ; then
 			echo "Building JS target \"${dir}\"..."
-			shx live $dir --minify $1 > /dev/null
-			sed -zi "$substRules" "dist/${dir}.js"
+			targetFile="dist/${dir}.js"
 			if [ -f "src/${dir}/index.d.ts" ] ; then
 				cp "src/${dir}/index.d.ts" "dist/${dir}.d.ts"
 			fi
 		fi
-		if [ -f "src/${dir}/index.mjs" ] ; then
-			echo "Building JS module \"${dir}\"..."
-			shx live $dir --minify $1 > /dev/null
-			sed -zi "$substRules" "dist/${dir}.mjs"
-			if [ -f "src/${dir}/index.d.mts" ] ; then
-				cp "src/${dir}/index.d.mts" "dist/${dir}.d.mts"
+		if [ "$targetFile" != "" ]; then
+			shx live $dir "--minify --log-level=warning" $1 > /dev/null
+			mv "${targetFile}" "dist/buildProxy.bin"
+			if [ -f "src/${dir}/.prefix" ]; then
+				cat "src/${dir}/.prefix" > "${targetFile}"
 			fi
+			cat "dist/buildProxy.bin" >> "${targetFile}"
+			if [ -f "src/${dir}/.suffix" ]; then
+				cat "src/${dir}/.suffix" >> "${targetFile}"
+			fi
+			rm "dist/buildProxy.bin"
+			sed -zi "$substRules" "dist/${dir}.js"
 		fi
 	done
 #else
