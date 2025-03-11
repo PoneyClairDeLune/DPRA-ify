@@ -40,7 +40,7 @@ let TextMatcher = class {
 	static match(string, matchCache) {
 		let result = new TextMatchResultArray();
 		for (let key in matchCache) {
-			let startIndex = 0, attempts = 0, lastIndex = 0;
+			let startIndex = 0, attempts = 0, lastIndex = -1;
 			do {
 				let matchWindow = string.substring(startIndex);
 				let matchedIndex = matchWindow.indexOf(key);

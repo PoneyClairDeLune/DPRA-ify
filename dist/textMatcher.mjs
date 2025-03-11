@@ -26,7 +26,7 @@
   static match(string, matchCache) {
     let result = new TextMatchResultArray();
     for (let key in matchCache) {
-      let startIndex = 0, attempts = 0, lastIndex = 0;
+      let startIndex = 0, attempts = 0, lastIndex = -1;
       do {
         let matchedIndex = string.substring(startIndex).indexOf(key), currentIndex2 = matchedIndex + startIndex;
         if (matchedIndex === -1)

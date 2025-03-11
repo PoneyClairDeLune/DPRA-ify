@@ -99,6 +99,7 @@ for (let victimElement of candidateElements) {
 			//let victimText = childNode.data;
 			let allMatches = TextMatcher.match(childNode.data, sourceDict);
 			for (let e of allMatches) {
+				console.debug(e);
 				if (e.isMatch) {
 					// Use the rich approach
 					let newElement = document.createElement("span");
