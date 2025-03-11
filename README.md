@@ -8,3 +8,4 @@ Ever thought of the White House website of the US looked more akin to what you'v
 ## Features
 - [x] Title generation and replacement
 - [x] Enlarge all mentions of Trump (extra fancy!)
+- [x] Opportunistic rerun on page interaction
