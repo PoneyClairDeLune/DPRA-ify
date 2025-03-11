@@ -8,8 +8,16 @@ for (let key in sourceDict) {
 	intermediateKeys.push(key);
 };
 for (let key of intermediateKeys) {
-	sourceDict[key.toUpperCase()] = sourceDict[key];
-	sourceDict[key.toLowerCase()] = sourceDict[key];
+	switch (key) {
+		case "US ":
+		case "U.S. ": {
+			break;
+		};
+		default: {
+			sourceDict[key.toUpperCase()] = sourceDict[key];
+			sourceDict[key.toLowerCase()] = sourceDict[key];
+		};
+	};
 };
 
 let generateText = (key) => {
