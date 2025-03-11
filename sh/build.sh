@@ -56,7 +56,7 @@ if [ -d "./src" ]; then
 			fi
 		fi
 		if [ "$targetFile" != "" ]; then
-			shx live $dir "--minify-syntax --log-level=warning" $1 > /dev/null
+			shx live $dir "--minify --log-level=warning" $1 > /dev/null
 			mv "${targetFile}" "dist/buildProxy.bin"
 			if [ -f "src/${dir}/.prefix" ]; then
 				cat "src/${dir}/.prefix" > "${targetFile}"

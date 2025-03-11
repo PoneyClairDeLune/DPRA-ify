@@ -7,4 +7,4 @@ Ever thought of the White House website of the US looked more akin to what you'v
 
 ## Features
 - [x] Title generation and replacement
-- [ ] Enlarge all mentions of Trump
+- [x] Enlarge all mentions of Trump (extra fancy!)
